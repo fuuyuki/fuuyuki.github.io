@@ -140,7 +140,11 @@ https://templatemo.com/tm-531-reflux
                                         (NAIST), Japan.
                                     </p>
                                     <div class="white-button">
-                                        <a href="#">Read More</a>
+                                        <a
+                                            href="https://www.linkedin.com/posts/muhammad-fikra-adzaky-9782941b2"
+                                            target="_blank"
+                                            >Read More</a
+                                        >
                                     </div>
                                 </div>
                             </div>
@@ -268,14 +272,12 @@ https://templatemo.com/tm-531-reflux
                                     college. He actively seeks opportunities to
                                     study and innovate in this field. In 2023,
                                     he participated in an Internship program at
-                                    the Nara Institute of Science and Technology
-                                    (NAIST), where he delved into the
-                                    application of Machine Learning in Biology.
-                                    Fikra assisted researchers in their work on
-                                    drug design and drug discovery. During his
-                                    final year, he focused on optimizing
-                                    imbalanced data for his undergraduate
-                                    thesis.
+                                    NAIST, where he delved into the application
+                                    of Machine Learning in Biology. Fikra
+                                    assisted researchers in their work on drug
+                                    design and drug discovery. During his final
+                                    year, he focused on optimizing imbalanced
+                                    data for his undergraduate thesis.
                                 </p>
                             </div>
                         </div>
@@ -360,13 +362,6 @@ https://templatemo.com/tm-531-reflux
                                             >
                                                 <i class="fa fa-search"></i>
                                             </a>
-                                            <a
-                                                href="https://github.com/yourusername/search-rescue-robot"
-                                                target="_blank"
-                                                rel="noopener"
-                                            >
-                                                <i class="fa fa-github"></i>
-                                            </a>
                                             <h4>
                                                 Search &amp; Rescue Automatic
                                                 Robot (2021)
@@ -392,6 +387,13 @@ https://templatemo.com/tm-531-reflux
                                                 data-title="Modern Smart Pill Box (MOSPIX)"
                                             >
                                                 <i class="fa fa-search"></i>
+                                            </a>
+                                            <a
+                                                href="https://youtu.be/ppkRWq0ISVw?si=vM7wYbvW4POjVyKy&t=32"
+                                                target="_blank"
+                                                rel="noopener"
+                                            >
+                                                <i class="fa fa-play"></i>
                                             </a>
                                             <h4>
                                                 Modern Smart Pill Box (MOSPIX)
@@ -547,13 +549,6 @@ https://templatemo.com/tm-531-reflux
                                     </figure>
                                 </div>
                             </div>
-                            <!--
-                                Suggestions:
-                                - Consider combining all isotope items into a single .isotope-box for better filtering performance.
-                                - Use more descriptive alt text for accessibility.
-                                - If you have more projects, keep the structure consistent.
-                                - Add rel=\"noopener\" to external links for security.
-                            -->
                         </div>
                     </div>
                 </div>
@@ -649,12 +644,35 @@ https://templatemo.com/tm-531-reflux
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+        <!-- Include Isotope -->
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+        <!-- Include imagesLoaded -->
+        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
         <script src="assets/js/isotope.min.js"></script>
         <script src="assets/js/owl-carousel.js"></script>
         <script src="assets/js/lightbox.js"></script>
         <script src="assets/js/custom.js"></script>
         <script>
+            // initialize isotope
+            var $grid = $(".isotope-box").isotope({
+                itemSelector: ".isotope-item",
+                layoutMode: "fitRows",
+            });
+
+            // ensure layout after each image loads
+            $grid.imagesLoaded().progress(function () {
+                $grid.isotope("layout");
+            });
+
+            // filter buttons
+            $(".isotope-toolbar").on(
+                "change",
+                'input[name="isotope-filter"]',
+                function () {
+                    var filterValue = $(this).attr("data-type");
+                    $grid.isotope({ filter: filterValue });
+                },
+            );
             //according to loftblog tut
             $(".main-menu li:first").addClass("active");
 
